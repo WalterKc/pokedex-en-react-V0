@@ -1,8 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
+<<<<<<< Updated upstream
 import Button from "react-bootstrap/Button";
 import image from "./img/pokedex2.png";
 import { obtenerNumeroPaginas } from "./service/service";
+=======
+>>>>>>> Stashed changes
 import { obtenerPagina } from "./service/service";
 import { mostrarPagina } from "./ui/ui";
 import { useEffect } from "react";
@@ -10,6 +13,7 @@ import { NavPokedex } from "./componentes/nav";
 import { mostrarPokemon } from "./ui/ui";
 import { selecionarPagina } from "./ui/ui";
 
+<<<<<<< Updated upstream
 //bueno, aca voy pasar la pokedex a react, el codigo puro de js, asumo que va a ser , mayormente compatible
 //y vamos a tener que tocar lo que se muestra, por suerte, no es muy complicado, despues de hacerla 5 veces
 //se que es cada cosa.....
@@ -46,7 +50,13 @@ async function test2() {
 function App() {
   //creo que aca va un useEffect..
   //test de la api y service
+=======
+export async function inicializar() {
+  mostrarPagina(await obtenerPagina(1));
+}
+>>>>>>> Stashed changes
 
+function App() {
   useEffect(() => {
     inicializar();
     document.querySelector("#contenedor-pokemones").onclick = mostrarPokemon;
@@ -54,9 +64,13 @@ function App() {
     document.querySelector("#boton-siguiente").onclick = selecionarPagina;
     document.querySelector("#boton-anterior").onclick = selecionarPagina;
     document.querySelector("#ir-pagina").onclick = selecionarPagina;
+<<<<<<< Updated upstream
     //test();
     test2();
   }, []);
+=======
+  });
+>>>>>>> Stashed changes
 
   return (
     <div className="App">
