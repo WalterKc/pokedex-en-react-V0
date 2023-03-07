@@ -1,7 +1,4 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Button from "react-bootstrap/Button";
-import image from "./img/pokedex2.png";
 import { obtenerNumeroPaginas } from "./service/service";
 import { obtenerPagina } from "./service/service";
 import { mostrarPagina, obtenerPaginasTotales } from "./ui/ui";
@@ -14,8 +11,8 @@ import {
   listaPokemones,
   obtenerPaginasTotalesM,
   testMapeo,
-} from "./mapeador/pokemon";
-import { paginasTotales } from "./mapeador/pokemon";
+} from "./mapeador/maper.js";
+import { paginasTotales } from "./mapeador/maper";
 
 //bueno, aca voy pasar la pokedex a react, el codigo puro de js, asumo que va a ser , mayormente compatible
 //y vamos a tener que tocar lo que se muestra, por suerte, no es muy complicado, despues de hacerla 5 veces

@@ -1,8 +1,6 @@
 import { obtenerPokemon } from "../service/service.js";
 import { obtenerPagina } from "../service/service.js";
 import { obtenerNumeroPaginas } from "../service/service.js";
-import { listaPokemones } from "../mapeador/pokemon.js";
-//console.log(listaPokemones);
 
 export let PAGINA = 1;
 export let PAGINAS_TOTALES = 0;

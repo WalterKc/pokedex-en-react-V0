@@ -2,7 +2,6 @@
 import { Pokemon } from "../entidades/pokemon";
 import { Movimiento } from "../entidades/movimientos";
 import { PAGINA } from "../ui/ui";
-import { obtenerNumeroPaginas } from "../service/service";
 export let paginasTotales = 0;
 let paginasGuardadas = [];
 let contadorPokemones = 0;
@@ -26,7 +25,7 @@ export function checkeoPaginas() {
 //console.log(await obtenerNumeroPaginas());
 export let listaPokemones = [];
 
-export function testMapeo(datosApi) {
+export function mapearPokemon(datosApi) {
   const {
     id,
     name: nombre,
