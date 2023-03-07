@@ -1,11 +1,4 @@
 import { cargarPokemon, obtenerPokemones } from "../api/api.js";
-<<<<<<< Updated upstream
-
-export async function obtenerPagina(pagina) {
-  const pokemones = await obtenerPokemones(pagina);
-  console.log(pokemones.results);
-  return pokemones.results;
-=======
 import { mapearPokemon } from "../mapeador/maper.js";
 import { obtenerObjetoLocalStorage } from "../storage/controlador.js";
 import { guardarObjetoLocalStorage } from "../storage/controlador.js";
@@ -18,7 +11,6 @@ export async function obtenerPagina(pagina) {
     guardarObjetoLocalStorage(pokemones.results, "Pagina " + pagina);
     return pokemones.results;
   }
->>>>>>> Stashed changes
 }
 export async function obtenerNumeroPaginas() {
   const numero = await obtenerPokemones();
@@ -26,10 +18,6 @@ export async function obtenerNumeroPaginas() {
 }
 
 export async function obtenerPokemon(nombre) {
-<<<<<<< Updated upstream
-  const pokemon = await cargarPokemon(nombre);
-  return pokemon;
-=======
   if (obtenerObjetoLocalStorage(nombre) !== null) {
     return obtenerObjetoLocalStorage(nombre);
   } else {
@@ -43,5 +31,4 @@ export async function obtenerPokemon(nombre) {
 
     return pokemon;
   }
->>>>>>> Stashed changes
 }

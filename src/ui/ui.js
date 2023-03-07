@@ -34,10 +34,7 @@ export async function mostrarPagina(pokemones) {
       img.setAttributeNode(src);
       div.appendChild(img);
     }
-<<<<<<< Updated upstream
     PAGINA = 1;
-=======
->>>>>>> Stashed changes
     primeraPaginaHecha = true;
     obtenerPaginasTotales(pokemones.length);
   } else {
