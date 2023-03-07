@@ -4,11 +4,18 @@ import Button from "react-bootstrap/Button";
 import image from "./img/pokedex2.png";
 import { obtenerNumeroPaginas } from "./service/service";
 import { obtenerPagina } from "./service/service";
-import { mostrarPagina } from "./ui/ui";
+import { mostrarPagina, obtenerPaginasTotales } from "./ui/ui";
 import { useEffect } from "react";
 import { NavPokedex } from "./componentes/nav";
 import { mostrarPokemon } from "./ui/ui";
 import { selecionarPagina } from "./ui/ui";
+import {
+  checkeoPaginas,
+  listaPokemones,
+  obtenerPaginasTotalesM,
+  testMapeo,
+} from "./mapeador/pokemon";
+import { paginasTotales } from "./mapeador/pokemon";
 
 //bueno, aca voy pasar la pokedex a react, el codigo puro de js, asumo que va a ser , mayormente compatible
 //y vamos a tener que tocar lo que se muestra, por suerte, no es muy complicado, despues de hacerla 5 veces
@@ -34,6 +41,32 @@ import { selecionarPagina } from "./ui/ui";
 
 
  */
+//NUEVOS CAMBIOS
+/**
+ * vamos a poner un par de cosas nuevas aca, el primero va a hacer es crear las clases de los pokemons
+ * es similar a lo que hicimos antes y lo que ya haciamos en python, para hacerlo simple, vamos a sincronizarlo
+ * con la api, y que, por cada pagina, guarde lo que sea adecuado, tambien tenemos que hacer que trabaje con
+ * estas, de base(osea, solo carga las instacia de pokemon)
+ * luego, tambien hay que hacer que tenga cache para eso, tenemos que ver localStorage
+ * con eso es todo, hace eso y vas a estar(casi) en la clase 17 ya, que es otra cosa
+ *
+ */
+//primero, vamos a crear las clases de pokemon
+// NUEVO, primero vamos a hacerlo bien con seccionStorage(un array normal), y luego con el localStorage
+//asi no te volves loco
+/**
+ * bueno, ya tenemos la mitad echo , pero desornedano y no implementado, como digimos arriba, vamos a crear un limitador
+ * de objetos enviados(para que no envie datos repetidos)(ya lo tenemos, pero no esta implementado),
+ * luego, vamos a enviar los datos al localStoraje, y la leerlos(en un console log basta), cuando esto este bien
+ * vamos a implementar/cambiar lo que sea necesario para tener un cache como la gente.
+ *
+ */
+//asi como esta no funciona bien, solo guarda el ultimo, hay que hacer que guarde todos...mmmmmmmmm veamos
+//mmm, esto es raro, funciona asi nomas sin ponerle controlador.... asumo que sobreescribe las keys anteriores
+//tiene toda la pinta, bueno, asi me sirve igualmente
+//ahora, vamos a ver ,como le hacemos para integrarlo...
+//ok ,ahora vamos a modificar como se cargan las cosas... vamos a ver primero como se hace , y luego a cambiarlo
+//
 export async function inicializar() {
   mostrarPagina(await obtenerPagina(1));
 }
@@ -41,7 +74,12 @@ async function test() {
   console.log(await obtenerNumeroPaginas());
 }
 async function test2() {
-  console.log(await obtenerPagina(1));
+  //console.log(await obtenerPagina(1));
+  //console.log(listaPokemones);
+  localStorage.setItem("miGato", "Juan");
+  obtenerPaginasTotalesM(await obtenerNumeroPaginas());
+  //console.log(paginasTotales);
+  //checkeoPaginas();
 }
 function App() {
   //creo que aca va un useEffect..
@@ -54,9 +92,10 @@ function App() {
     document.querySelector("#boton-siguiente").onclick = selecionarPagina;
     document.querySelector("#boton-anterior").onclick = selecionarPagina;
     document.querySelector("#ir-pagina").onclick = selecionarPagina;
-    //test();
     test2();
-  }, []);
+
+    //test();
+  });
 
   return (
     <div className="App">

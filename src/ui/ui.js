@@ -1,12 +1,15 @@
 import { obtenerPokemon } from "../service/service.js";
 import { obtenerPagina } from "../service/service.js";
 import { obtenerNumeroPaginas } from "../service/service.js";
+import { listaPokemones } from "../mapeador/pokemon.js";
+//console.log(listaPokemones);
 
-export let PAGINA = 0;
+export let PAGINA = 1;
 export let PAGINAS_TOTALES = 0;
 export let primeraPaginaHecha = false;
 //listo
 export async function mostrarPagina(pokemones) {
+  //console.log(listaPokemones);
   let contenedorPokemones = document.querySelector("#contenedor-pokemones");
   if (!primeraPaginaHecha) {
     for (let i = 0; i < pokemones.length; i++) {
@@ -34,9 +37,10 @@ export async function mostrarPagina(pokemones) {
       img.setAttributeNode(src);
       div.appendChild(img);
     }
-    PAGINA = 1;
+    //PAGINA = 1;
     primeraPaginaHecha = true;
     obtenerPaginasTotales(pokemones.length);
+    console.log(PAGINA);
   } else {
     for (let i = 0; i < pokemones.length; i++) {
       const pokemon = pokemones[i];
@@ -57,6 +61,7 @@ export async function mostrarPagina(pokemones) {
       img.setAttributeNode(src);
       contenedorPokemones.querySelectorAll(".pokemon")[i].appendChild(img);
     }
+    console.log(PAGINA);
   }
 }
 
@@ -82,6 +87,7 @@ export async function obtenerPaginasTotales(pokemonesPorPagina) {
 }
 //nole gusta a jest tampoco
 export async function mostrarPokemon(e) {
+  console.log(" TARGET", e.target.id);
   let datosPokemon = document.querySelector("#pokemon");
   const pokemon = await obtenerPokemon(e.target.id);
   datosPokemon.querySelector("#pokemon .imagen").src =
@@ -145,6 +151,7 @@ export async function selecionarPagina(e) {
     document.querySelector("#pokemon").hidden = true;
   }
 }
+
 /* no le gusta a jest esto tampoco
 document.querySelector("#contenedor-pokemones").onclick = mostrarPokemon;
 document.querySelector("#boton-volver").onclick = selecionarPagina;
